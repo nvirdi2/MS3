@@ -21,11 +21,11 @@ namespace sdds
 
       void resetTime();
 
-      std::istream& read(std::istream& istr);
-      std::istream& csvRead(std::istream& istr);
+      std::istream& read(std::istream& is);
+      std::istream& csvRead(std::istream& is);
 
-      std::ostream& csvWrite(std::ostream& ostr)const;
-      std::ostream& write(std::ostream& ostr )const;
+      std::ostream& csvWrite(std::ostream& os)const;
+      std::ostream& write(std::ostream& os )const;
 
       operator Time()const;
 
