@@ -5,37 +5,31 @@
 
 //I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
 
-#ifndef SDDS_TIMER_H
-#define SDDS_TIMER_H
-#include <iostream>
-namespace sdds
+#ifndef SDDS_TICKET_H_
+#define SDDS_TICKET_H_
+
+#include "IOAble.h"
+#include "Time.h"
+
+namespace sdds 
 {
-   class Time
-   {
-      unsigned int m_minutes;
-
+   class Ticket:public IOAble {
+      Time time;
+      int num;
    public:
-      Time &setToNow();
-      Time(unsigned int minutes = 0);
-      std::ostream &write(std::ostream &ostr) const;
-      std::istream &read(std::istream &istr);
+      Ticket(int NUM = 0);
 
-      Time &operator-=(const Time &D);
-      Time operator-(const Time &D) const;
-      Time &operator+=(const Time &D);
-      Time operator+(const Time &D) const;
+      void resetTime();
 
-      Time &operator=(unsigned int val);
-      Time &operator*=(unsigned int val);
-      Time &operator/=(unsigned int val);
-      Time operator*(unsigned int val) const;
-      Time operator/(unsigned int val) const;
+      std::istream& read(std::istream& is);
+      std::istream& csvRead(std::istream& is);
 
-      operator unsigned int() const;
-      operator int() const;
+      std::ostream& csvWrite(std::ostream& os)const;
+      std::ostream& write(std::ostream& os )const;
+
+      operator Time()const;
+
+      int number()const;
    };
-   std::ostream &operator<<(std::ostream &ostr, const Time &D);
-   std::istream &operator>>(std::istream &istr, Time &D);
 }
-
-#endif // !SDDS_TIME_H
+#endif //!SDDS_TICKET_H_
