@@ -23,22 +23,22 @@ namespace sdds
 
 
 
-   std::istream& Ticket::read(std::istream& istr) {
-         return csvRead(istr);
+   std::istream& Ticket::read(std::istream& is) {
+         return csvRead(is);
    }
-   std::istream& Ticket::csvRead(std::istream& istr) {
-      istr >> num;
-      istr.ignore();
-         return istr >> time;
+   std::istream& Ticket::csvRead(std::istream& is) {
+      is >> num;
+      is.ignore();
+         return is >> time;
    }
 
 
 
-   std::ostream& Ticket::write(std::ostream& ostr) const {
-         return ostr << "Ticket No: " << num << ", Issued at: " << time ;
+   std::ostream& Ticket::write(std::ostream& os) const {
+         return os << "Ticket No: " << num << ", Issued at: " << time ;
    }
-   std::ostream& Ticket::csvWrite(std::ostream& ostr) const {
-         return ostr << num << "," << time;
+   std::ostream& Ticket::csvWrite(std::ostream& os) const {
+         return os << num << "," << time;
    }
 
 
