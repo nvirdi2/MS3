@@ -44,12 +44,12 @@ namespace sdds
 
 
 
-    std::istream& Patient::read(std::istream& istr) {
+    std::istream& Patient::read(std::istream& is) {
         int lenght;
 
         std::cout << "Name: ";
         std::string name;
-        std::getline(istr, name);
+        std::getline(is, name);
 
         lenght = name.length();
 
@@ -62,13 +62,13 @@ namespace sdds
         std::cout << "OHIP:";
         o_num = getInt(100000000, 999999999, nullptr, "Invalid OHIP Number, ");
         
-            return istr;
+            return is;
     }
-    std::istream& Patient::csvRead(std::istream& istr) {
+    std::istream& Patient::csvRead(std::istream& is) {
         int lenght;
 
         std::string name;
-        std::getline(istr, name, ',');
+        std::getline(is, name, ',');
 
         lenght = name.length();
 
@@ -79,36 +79,36 @@ namespace sdds
 
         m_name[lenght] = '\0';
         
-        istr >> o_num;
-        istr.ignore();
+        is >> o_num;
+        is.ignore();
 
-            return object.csvRead(istr);
+            return object.csvRead(is);
     }
 
 
 
-    std::ostream& Patient::write(std::ostream& ostr) const
+    std::ostream& Patient::write(std::ostream& os) const
     {
         int i;
 
-        ostr << object << '\n';
+        os << object << '\n';
 
         for(i = 0; i < 25 && m_name[i]; i++)
         {
-            ostr << m_name[i];
+            os << m_name[i];
         }
 
-        ostr << ", OHIP: ";
-        ostr << o_num;
+        os << ", OHIP: ";
+        os << o_num;
 
-            return ostr;
+            return os;
     }
-    std::ostream& Patient::csvWrite(std::ostream& ostr) const {
-        ostr << type() << ',';
-        ostr <<m_name << ',';
-        ostr << o_num << ',';
+    std::ostream& Patient::csvWrite(std::ostream& os) const {
+        os << type() << ',';
+        os <<m_name << ',';
+        os << o_num << ',';
 
-            return object.csvWrite(ostr);
+            return object.csvWrite(os);
     }
 
 
